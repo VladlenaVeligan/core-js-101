@@ -26,9 +26,13 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
-/* return num % 3 === 0 ? (num % 5 === 0 ?(num % 15 === 0 ? num : 'FizzBuzz') : 'Buzz') : 'Fizz' */
+function getFizzBuzz(num) {
+  let res = '';
+  if (num % 3 === 0 && num % 5 === 0) res = 'FizzBuzz';
+  else if (num % 3 === 0) res = 'Fizz';
+  else if (num % 5 === 0) res = 'Buzz';
+  else res = num;
+  return res;
 }
 
 /**
@@ -58,8 +62,12 @@ function getFactorial(n) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  const result = [];
+  for (let i = n1; i <= n2; i += 1) {
+    result.push(i);
+  }
+  return result.reduce((a, b) => a + b);
 }
 
 /**
@@ -77,8 +85,11 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  const sides = [a, b, c];
+  const max = Math.max(...sides);
+  const sum = sides.reduce((acc, curVal) => acc + curVal, 0);
+  return sum - max > max;
 }
 
 /**
@@ -258,8 +269,10 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  const sum1 = Array.from(String(num)).map((el) => Number(el)).reduce((a, b) => a + b);
+  if (sum1 > 9) return Array.from(String(sum1)).map((el) => Number(el)).reduce((a, b) => a + b);
+  return sum1;
 }
 
 /**
@@ -307,8 +320,8 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 /**
